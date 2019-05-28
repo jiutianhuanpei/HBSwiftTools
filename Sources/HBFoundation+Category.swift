@@ -12,46 +12,49 @@ import CommonCrypto
 
 extension String {
     
-    //    MARK:- 字符串截取
-    /// 获取字符串的子字符串，若区间在字符串外，会返回 ""
-    ///
-    /// - Parameter range: 要获取的字符串区间
-    /// - Returns: 子字符串
-    func subString(_ range: Range<Int>) -> String {
-        
-        let a = range.lowerBound, b = range.upperBound
-        return _HBSubString(from: a, to: b)
-    }
-    func subString(_ range: ClosedRange<Int>) -> String {
-        
-        let a = range.lowerBound, b = range.upperBound
-        return _HBSubString(from: a, to: b)
-    }
-    func subString(_ range: PartialRangeThrough<Int>) -> String {
-        
-        let a = 0, b = range.upperBound
-        return _HBSubString(from: a, to: b)
-    }
-    func subString(_ range: PartialRangeFrom<Int>) -> String {
-        
-        let a = range.lowerBound, b = count
-        return _HBSubString(from: a, to: b)
-    }
+    //    MARK:-  字符串截取
     
-    private func _HBSubString(from: Int, to: Int) -> String {
-        let a = max(0, from)
-        let b = min(count, to)
+    /// 字符串截取
+    ///
+    /// - Parameter range: 区间
+    /// - Returns: 子字符串
+    func subString<T>(_ range: T) -> String {
         
-        if a >= b {
-            return ""
+        let begin = startIndex
+        
+        func hb_stringIndex(_ i: Int) -> String.Index {
+            return index(begin, offsetBy: i)
         }
         
-        let start = index(startIndex, offsetBy: a)
-        let end = index(startIndex, offsetBy: b)
+        if let kRange = range as? Range<Int> {
+            
+            let begin = hb_stringIndex(kRange.lowerBound)
+            let end = hb_stringIndex(kRange.upperBound)
+            return String(self[begin..<end])
+            
+        } else if let kRange = range as? ClosedRange<Int> {
+            
+            let begin = hb_stringIndex(kRange.lowerBound)
+            let end = hb_stringIndex(kRange.upperBound)
+            return String(self[begin...end])
+            
+        } else if let kRange = range as? PartialRangeThrough<Int> {
+            
+            let end = hb_stringIndex(kRange.upperBound)
+            return String(self[...end])
+            
+        } else if let kRange = range as? PartialRangeUpTo<Int> {
+            
+            let end = hb_stringIndex(kRange.upperBound)
+            return String(self[..<end])
+            
+        } else if let kRange = range as? PartialRangeFrom<Int> {
+            
+            let begin = hb_stringIndex(kRange.lowerBound)
+            return String(self[begin...])
+        }
         
-        let str = self[start..<end]
-        
-        return String(str)
+        return ""
     }
     
     //    MAKR:- md5加密
@@ -76,8 +79,6 @@ extension String {
         return md5Str
     }
     
-    
-    
 }
 
 extension Dictionary {
@@ -97,7 +98,6 @@ extension Dictionary {
     func float(for key: Key) -> Float {
         return _HBValue(key, default: 0.0)
     }
-    
     
     fileprivate func _HBValue<T>(_ key: Key, `default`: T) -> T {
         return (self[key] as? T) ?? `default`
