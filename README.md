@@ -93,6 +93,7 @@ pod 'HBSwiftTools'
 	| API | 描述 |
 	|---|---|
 	`class func qrImage(with text: String, width: CGFloat = 100) -> UIImage?` | 根据传入的字符串生成二维码
+	`var qrText: String? { get }` | 识别二维码图片的文本
 
 <br/>
 
