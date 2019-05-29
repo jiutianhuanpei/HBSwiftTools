@@ -12,11 +12,6 @@ pod 'HBSwiftTools'
 
 <br/>
 
-<style>
-hb {
-	font-size: 20px
-}
-</style>
 
 ### 现有文件
 
@@ -31,7 +26,7 @@ hb {
 -
 ---
 
-<hb id="a">HBFoundation+Category.swift</hb>
+<b id="a" style="font-size:20px">HBFoundation+Category.swift</b>
 
 * **String 的扩展**
 
@@ -62,7 +57,7 @@ hb {
 
 
 <br/>
-<hb id="b">HBUI+Category.swift</hb>
+<b id="b" style="font-size:20px">HBUI+Category.swift</b>
 
 * **UIView 的扩展**
 
@@ -76,7 +71,7 @@ hb {
 	
 
 <br/>
-<hb id="c">HBPublicFunctions.swift</hb>
+<b id="c" style="font-size:20px">HBPublicFunctions.swift</b>
 
 * **UITableView 的扩展**
 
@@ -100,7 +95,7 @@ hb {
 	`class func qrImage(with text: String, width: CGFloat = 100) -> UIImage?` | 根据传入的字符串生成二维码
 
 <br/>
-<hb id="d">CIFilter+Category.swift</hb>
+<b id="d" style="font-size:20px">CIFilter+Category.swift</b>
 
 这个文件是 CIFilter 的相关扩展，由于系统对 CIFilter 的初始化方法不太友好，所以这里也扩展了对它的初始化方法。
 
