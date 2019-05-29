@@ -172,5 +172,23 @@ public extension UIImage {
         
         return resultImage
     }
+    
+    /// 识别二维码图片的文本
+    var qrText: String? {
+        
+        let detecor = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil)
+        
+        let ciImage = CIImage(cgImage: cgImage!)
+        
+        let array = detecor?.features(in: ciImage)
+        
+        if let feature = array?.first as? CIQRCodeFeature {
+            return feature.messageString
+        }
+        
+        return nil
+    }
+    
+    
 }
 
