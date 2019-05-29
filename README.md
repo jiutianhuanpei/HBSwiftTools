@@ -113,8 +113,8 @@ pod 'HBSwiftTools'
 
 <br/>
 
-| API | 描述 |
-|---|---|
-`init?(name: CIFilterName)` | 根据传入的 *CIFilterName* 枚举值生成 CIFilter 实例
-`init?(qrText: String, correctionLevel: QRCorrectionLevel = .M)` | 根据传入的字符串和 *QRCorrectionLevel* 枚举值生成一个 `CIQRCodeGenerator` 实例
+	| API | 描述 |
+	|---|---|
+	`init?(name: CIFilterName)` | 根据传入的 *CIFilterName* 枚举值生成 CIFilter 实例
+	`init?(qrText: String, correctionLevel: QRCorrectionLevel = .M)` | 根据传入的字符串和 *QRCorrectionLevel* 枚举值生成一个 `CIQRCodeGenerator` 实例
 
