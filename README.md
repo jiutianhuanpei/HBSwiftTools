@@ -23,7 +23,7 @@ pod 'HBSwiftTools'
 [CIFilter+Category.swift](#d) | CIFilter 的扩展
 
 <br/>
--
+
 ---
 
 <b id="a" style="font-size:20px">HBFoundation+Category.swift</b>
@@ -95,6 +95,7 @@ pod 'HBSwiftTools'
 	`class func qrImage(with text: String, width: CGFloat = 100) -> UIImage?` | 根据传入的字符串生成二维码
 
 <br/>
+
 <b id="d" style="font-size:20px">CIFilter+Category.swift</b>
 
 <br/>
