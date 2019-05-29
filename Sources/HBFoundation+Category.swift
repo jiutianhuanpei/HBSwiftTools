@@ -84,22 +84,22 @@ public extension String {
 public extension Dictionary {
     func string(for key: Key) -> String {
         
-        return _HBValue(key, default: "")
+        return HBValue(key, default: "")
     }
     
     func int(for key: Key) -> Int {
-        return _HBValue(key, default: 0)
+        return HBValue(key, default: 0)
     }
     
     func bool(for key: Key) -> Bool {
-        return _HBValue(key, default: false)
+        return HBValue(key, default: false)
     }
     
     func float(for key: Key) -> Float {
-        return _HBValue(key, default: 0.0)
+        return HBValue(key, default: 0.0)
     }
     
-    fileprivate func _HBValue<T>(_ key: Key, `default`: T) -> T {
+    func HBValue<T>(_ key: Key, `default`: T) -> T {
         return (self[key] as? T) ?? `default`
     }
 }
