@@ -11,7 +11,7 @@ import CoreImage
 import ImageIO
 import AVFoundation
 
-extension UIView {
+public extension UIView {
     
     //MARK:- 属性
     var x: CGFloat {
@@ -66,7 +66,7 @@ extension UIView {
 }
 
 
-extension UITableView {
+public extension UITableView {
     
     /// 注册 cell
     ///
@@ -79,7 +79,7 @@ extension UITableView {
     
 }
 
-extension UIColor {
+public extension UIColor {
     
     /// 十六位颜色
     ///
@@ -130,7 +130,7 @@ extension UIColor {
     }
 }
 
-extension UIImage {
+public extension UIImage {
     
     /// 生成二维码图片
     ///

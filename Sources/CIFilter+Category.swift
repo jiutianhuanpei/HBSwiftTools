@@ -8,7 +8,33 @@
 
 import CoreImage
 
-enum CIFilterName: String {
+public extension CIFilter {
+    
+    /// CIFilter 初始化
+    ///
+    /// - Parameter name: 枚举值
+    convenience init?(name: CIFilterName) {
+        self.init(name: name.rawValue)
+    }
+    
+    /// 二维码对应的 CIFilter 初始化
+    ///
+    /// - Parameters:
+    ///   - qrText: 用于生成二维码的的文本
+    ///   - correctionLevel: 容错级别
+    convenience init?(qrText: String, correctionLevel: QRCorrectionLevel = .M) {
+        self.init(name: CIFilterName.CIQRCodeGenerator.rawValue)
+        
+        if let data = qrText.data(using: .utf8) {
+            setValue(data, forKey: "inputMessage")
+        }
+        setValue(correctionLevel.rawValue, forKey: "inputCorrectionLevel")
+    }
+}
+
+//MAKR:- enum
+
+public enum CIFilterName: String {
     case CIAccordionFoldTransition
     case CIAdditionCompositing
     case CIAffineClamp
@@ -224,35 +250,9 @@ enum CIFilterName: String {
 /// - M: 15%的字码可被修正
 /// - Q: 25%的字码可被修正
 /// - H: 30%的字码可被修正
-enum QRCorrectionLevel: String {
+public enum QRCorrectionLevel: String {
     case L
     case M
     case Q
     case H
 }
-
-extension CIFilter {
-    
-    /// CIFilter 初始化
-    ///
-    /// - Parameter name: 枚举值
-    convenience init?(name: CIFilterName) {
-        self.init(name: name.rawValue)
-    }
-    
-    /// 二维码对应的 CIFilter 初始化
-    ///
-    /// - Parameters:
-    ///   - qrText: 用于生成二维码的的文本
-    ///   - correctionLevel: 容错级别
-    convenience init?(qrText: String, correctionLevel: QRCorrectionLevel = .M) {
-        self.init(name: CIFilterName.CIQRCodeGenerator.rawValue)
-        
-        if let data = qrText.data(using: .utf8) {
-            setValue(data, forKey: "inputMessage")
-        }
-        setValue(correctionLevel.rawValue, forKey: "inputCorrectionLevel")
-    }
-    
-}
-

@@ -10,7 +10,7 @@
 import Foundation
 import CommonCrypto
 
-extension String {
+public extension String {
     
     //    MARK:-  字符串截取
     
@@ -81,7 +81,7 @@ extension String {
     
 }
 
-extension Dictionary {
+public extension Dictionary {
     func string(for key: Key) -> String {
         
         return _HBValue(key, default: "")
@@ -104,7 +104,7 @@ extension Dictionary {
     }
 }
 
-extension Data {
+public extension Data {
     
     /// 获取 二进制文件 的 md5 值
     var md5: String {
