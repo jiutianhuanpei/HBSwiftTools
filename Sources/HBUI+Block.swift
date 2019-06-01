@@ -25,7 +25,7 @@ public extension UIButton {
     }
 }
 
-extension UIControl {
+public extension UIControl {
     
     
     private struct ButtonKeys {
