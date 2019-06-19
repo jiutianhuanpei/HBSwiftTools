@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
 
 
   spec.name         = "HBSwiftTools"
-  spec.version      = "0.0.6"
+  spec.version      = "0.0.7"
   spec.summary      = "一些常用方法及扩展"
 
   spec.description  = <<-DESC
