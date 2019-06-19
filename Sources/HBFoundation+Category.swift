@@ -57,6 +57,33 @@ public extension String {
         return ""
     }
     
+    func toRange(_ range: NSRange) -> Range<String.Index>? {
+        
+        
+        guard let fromIndex = index(startIndex, offsetBy: range.location, limitedBy: endIndex) else { return nil }
+        
+        guard let toIndex = index(startIndex, offsetBy: range.location + range.length, limitedBy: endIndex) else { return nil }
+        
+        return fromIndex..<toIndex
+    }
+    
+    func toNSRange(_ range: Range<String.Index>) -> NSRange? {
+        
+        guard let from = range.lowerBound.samePosition(in: utf16) else { return nil }
+        guard let to = range.upperBound.samePosition(in: utf16) else { return nil }
+        
+        return NSRange(location: utf16.distance(from: utf16.startIndex, to: from), length: utf16.distance(from: from, to: to))
+    }
+    
+    func range(with str: String) -> NSRange? {
+        
+        guard let r = range(of: str) else {
+            return nil
+        }
+        
+        return self.toNSRange(r)        
+    }
+    
     //    MAKR:- md5加密
     
     /// 获取字符串的 md5 值
