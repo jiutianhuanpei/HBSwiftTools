@@ -1,18 +1,17 @@
-
 //
-//  HBFoundation+Category.swift
-//  SwiftTools
+//  String+HB.swift
+//  HBSwiftToolsDemo
 //
-//  Created by 沈红榜 on 2019/5/28.
+//  Created by 沈红榜 on 2019/6/26.
 //  Copyright © 2019 沈红榜. All rights reserved.
 //
 
 import Foundation
 import CommonCrypto
 
+
+// MARK: - 字符串截取
 public extension String {
-    
-    //    MARK:-  字符串截取
     
     /// 字符串截取
     ///
@@ -81,11 +80,70 @@ public extension String {
             return nil
         }
         
-        return self.toNSRange(r)        
+        return self.toNSRange(r)
+    }
+}
+
+
+//    MARK:- 字符串取值
+public extension String {
+    /// 取值失败返回 NSNotFound
+    var intValue: Int {
+        guard let value = Int(self) else { return NSNotFound }
+        return value
     }
     
-    //    MAKR:- md5加密
+    /// 取值失败返回 Float(NSNotFound)
+    var floatValue: Float {
+        guard let value = Float(self) else { return Float(NSNotFound) }
+        return value
+    }
     
+    /// 取值失败返回 Double(NSNotFound)
+    var doubleValue: Double {
+        guard let value = Double(self) else { return Double(NSNotFound) }
+        return value
+    }
+    
+    /// 取值失败返回 UInt(NSNotFound)
+    var UIntValue: UInt {
+        guard let value = UInt(self) else { return UInt(NSNotFound) }
+        return value
+    }
+    
+    /// 取值失败返回 UInt8(NSNotFound)
+    var UInt8Value: UInt8 {
+        guard let value = UInt8(self) else { return UInt8(NSNotFound) }
+        return value
+    }
+    
+    /// 取值失败返回 UInt16(NSNotFound)
+    var UInt16Value: UInt16 {
+        guard let value = UInt16(self) else { return UInt16(NSNotFound) }
+        return value
+    }
+    
+    /// 取值失败返回 UInt32(NSNotFound)
+    var UInt32Value: UInt32 {
+        guard let value = UInt32(self) else { return UInt32(NSNotFound) }
+        return value
+    }
+    
+    /// 取值失败返回 UInt64(NSNotFound)
+    var UInt64Value: UInt64 {
+        guard let value = UInt64(self) else { return UInt64(NSNotFound) }
+        return value
+    }
+    
+    /// 取值失败返回 false
+    var boolValue: Bool {
+        guard let value = Bool(self) else { return false }
+        return value
+    }
+}
+
+//    MARK:- md5加密
+public extension String {
     /// 获取字符串的 md5 值
     var md5: String {
         
@@ -105,55 +163,19 @@ public extension String {
         
         return md5Str
     }
-    
 }
 
-public extension Dictionary {
-    func string(for key: Key) -> String {
-        
-        return HBValue(key, default: "")
-    }
+public extension String {
     
-    func int(for key: Key) -> Int {
-        return HBValue(key, default: 0)
-    }
-    
-    func bool(for key: Key) -> Bool {
-        return HBValue(key, default: false)
-    }
-    
-    func float(for key: Key) -> Float {
-        return HBValue(key, default: 0.0)
-    }
-    
-    func HBValue<T>(_ key: Key, `default`: T) -> T {
-        return (self[key] as? T) ?? `default`
-    }
-}
-
-public extension Data {
-    
-    /// 获取 二进制文件 的 md5 值
-    var md5: String {
+    /// 返回字符串 utf8 编码下的 data，若转换失败则返回 Data()， 其 isEmpty 值为 true
+    var data: Data {
         
-        var ctx = CC_MD5_CTX()
-        
-        CC_MD5_Init(&ctx)
-        
-        var data = self
-        
-        CC_MD5_Update(&ctx, &data, CC_LONG(count))
-        
-        let disg = UnsafeMutablePointer<UInt8>.allocate(capacity: 0)
-        
-        CC_MD5_Final(disg, &ctx)
-        
-        var result = ""
-        
-        for idx in 0..<CC_MD5_DIGEST_LENGTH {
-            result = result.appendingFormat("%02x", disg[Int(idx)])
+        if let a = self.data(using: .utf8) {
+            return a
         }
-        return result
+        return Data()
     }
+    
+    
 }
 

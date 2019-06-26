@@ -9,28 +9,13 @@
 import UIKit
 import ObjectiveC
 
-
-public extension UIButton {
-    
-    
-    /// 设置按钮的文本、文本颜色
-    ///
-    /// - Parameters:
-    ///   - title: 文本
-    ///   - titleColor: 文本颜色
-    ///   - state: 状态
-    func set(title: String?, titleColor: UIColor?, for state: UIControl.State) {
-        setTitle(title, for: state)
-        setTitleColor(titleColor, for: state)
-    }
-}
-
-extension UIControl {
+public extension UIControl {
     
     
     private struct ButtonKeys {
         static var ActionClosureKey = "ActionClosureKey"
     }
+    
     private var actionClosure: (UIControl)->Void {
         set {
             objc_setAssociatedObject(self, &ButtonKeys.ActionClosureKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
