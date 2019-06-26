@@ -9,33 +9,46 @@
 import UIKit
 
 class RootViewController: UIViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(0xffffff)
         
-        let str = "123a"
+        view.addSubViews(imgView)
         
-        let float = str.floatValue
+        let qrImg = UIImage(qrText: "https://www.baidu.com", width: 200)
+        imgView.image = qrImg
         
-        if float == Float(NSNotFound) {
-            print("no found")
-        } else {
-            print("==")
+        guard let img = qrImg else { return  }
+        
+        let base64Str = img.base64String
+        
+        print("base64Str is :\n\(base64Str)")
+        
+        guard let baseImg = base64Str.convertToImage() else {
+            return
         }
         
+        print("baseImg is :\n\(baseImg)")
+        imgView.image = baseImg
         
-        let img1 = UIImage(qrText: "http://www.baidu.com", width: 200)
+        let img1 = baseImg.zoom(to: .init(width: 100, height: 100))
+        let img2 = baseImg.zoom(to: .init(width: 300, height: 300))
+        let img3 = baseImg.zoom(to: .init(width: 20, height: 20))
+
         
-        print(img1!.qrText!)
         
-        print(str.md5)
-        print(str.data.md5)
-        
-        if Data().isEmpty {
-            print("is empty")
-        }
-        
+        print(img1)
     }
+    
+    
+    //    MARK:- 属性
+    lazy var imgView: UIImageView = {
+        let v = UIImageView(frame: .init(x: 20, y: 100, width: view.width - 40, height: 200))
+        v.contentMode = UIView.ContentMode.scaleAspectFit
+        return v
+    }()
     
 }

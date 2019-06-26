@@ -8,7 +8,7 @@
 
 import Foundation
 import CommonCrypto
-
+import UIKit
 
 // MARK: - 字符串截取
 public extension String {
@@ -175,7 +175,22 @@ public extension String {
         }
         return Data()
     }
+}
+
+// MARK: - 字符串转图片，对应的还有图片转字符串
+public extension String {
+    
+    func convertToImage() -> UIImage? {
+        
+        guard let data = Data(base64Encoded: self) else {
+            return nil
+        }
+        
+        let img = UIImage(data: data)
+        return img
+    }
     
     
 }
+
 

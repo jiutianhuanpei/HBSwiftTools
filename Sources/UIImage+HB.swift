@@ -10,6 +10,7 @@ import UIKit
 import CoreImage
 import ImageIO
 
+// MARK: - 二维码相关
 public extension UIImage {
     
     /// 生成一张二维码图片，有可能生成失败
@@ -68,4 +69,47 @@ public extension UIImage {
 }
 
 
+// MARK: - 图片转字符串，对应的还有字符串转图片
+public extension UIImage {
+    
+    var base64String: String {
+        
+        guard let data = jpegData(compressionQuality: 1) else { return "" }
+        
+        let str = data.base64EncodedString()
+        return str
+    }
+}
+
+// MARK: - 缩放
+public extension UIImage {
+    
+    /// 缩放图片
+    ///
+    /// - Parameter to: 目标size
+    /// - Returns: 缩放后的图片；如果失败，则会返回一个宽高均为0的图片：UIImage()
+    func zoom(to: CGSize) -> UIImage {
+        
+        guard let cgImage = cgImage else { return UIImage() }
+        
+        UIGraphicsBeginImageContextWithOptions(to, false, 0)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return  UIImage() }
+        context.scaleBy(x: 1, y: -1)
+        context.translateBy(x: 0, y: -to.height)
+        context.setBlendMode(.multiply)
+        context.setAlpha(1)
+        context.draw(cgImage, in: .init(origin: .zero, size: to))
+        
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if let result = img {
+            return result
+        }
+        return  UIImage()
+    }
+    
+    
+}
 

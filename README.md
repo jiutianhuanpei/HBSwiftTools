@@ -33,7 +33,13 @@ pod 'HBSwiftTools'
 	| API | 描述 |
 	|---|---|
 	`func subString<T>(_ range: T) -> String` | 截取字符串
+	`func toRange(_ range: NSRange) -> Range<String.Index>?` | 转换 NSRange 为 Range<String.Index>
+	`func toNSRange(_ range: Range<String.Index>) -> NSRange?` | 转换 Range<String.Index> 为 NSRange
+	`func range(with str: String) -> NSRange?` | 获取子字符串在字符串中的位置
 	`var md5: String { get }` | 获取字符串的 md5 值
+	`var intValue: Int { get }` | 字符串转 Int
+	`var floatValue: Float { get }` | 字符串转 Float
+	还有 doubleValue、UIntValue、UInt8Value、boolValue 等 | 
 	
 <br/>
 
@@ -84,15 +90,15 @@ pod 'HBSwiftTools'
 
 	| API | 描述 |
 	|---|---|
-	`class func color(_ hexStr: String, alpha: CGFloat = 1) -> UIColor?` | 根据十六位色值的字符串生成 RGB 颜色
-	`class func color(_ hexInt: Int, alpha: CGFloat = 1) -> UIColor` | 根据十六位色值的 Int 值生成 RGB 颜色
+	`convenience init?(_ hexStr: String, alpha: CGFloat = 1)` | 根据十六位色值的字符串生成 RGB 颜色
+	`convenience init(_ hexInt: Int, alpha: CGFloat = 1)` | 根据十六位色值的 Int 值生成 RGB 颜色
 	
 	<br/>
 * **UIImage 的扩展**
 
 	| API | 描述 |
 	|---|---|
-	`class func qrImage(with text: String, width: CGFloat = 100) -> UIImage?` | 根据传入的字符串生成二维码
+	`convenience init?(qrText: String, width: CGFloat = 100)` | 根据传入的字符串生成二维码图片
 	`var qrText: String? { get }` | 识别二维码图片的文本
 
 <br/>
