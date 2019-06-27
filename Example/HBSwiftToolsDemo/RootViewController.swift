@@ -18,6 +18,9 @@ class RootViewController: UIViewController {
         
         view.addSubViews(imgView)
         
+        let subStr = "0123456789".subString(3..<7)
+        print(subStr)
+        
         let qrImg = UIImage(qrText: "https://www.baidu.com", width: 200)
         imgView.image = qrImg
         
@@ -25,7 +28,7 @@ class RootViewController: UIViewController {
         
         let base64Str = img.base64String
         
-        print("base64Str is :\n\(base64Str)")
+//        print("base64Str is :\n\(base64Str)")
         
         guard let baseImg = base64Str.convertToImage() else {
             return
@@ -38,9 +41,15 @@ class RootViewController: UIViewController {
         let img2 = baseImg.zoom(to: .init(width: 300, height: 300))
         let img3 = baseImg.zoom(to: .init(width: 20, height: 20))
 
+        imgView.image = UIImage(color: .red, size: .init(width: 30, height: 100))
+        
+        print(imgView.image)
         
         
-        print(img1)
+        DispatchQueue.main.asyncAfter(deadline: 2) {
+            // do something
+        }
+        
     }
     
     

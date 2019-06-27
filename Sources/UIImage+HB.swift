@@ -109,7 +109,29 @@ public extension UIImage {
         }
         return  UIImage()
     }
+}
+
+extension UIImage {
     
-    
+    /// 根据颜色生成一张纯色的图片
+    ///
+    /// - Parameters:
+    ///   - color: 颜色
+    ///   - size: 要生成的图片的size，default = (1, 1)
+    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return  nil }
+
+        context.setFillColor(color.cgColor)
+        context.fill(.init(origin: .zero, size: size))
+        
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let cgImage = img?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
+    }
 }
 

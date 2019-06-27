@@ -23,6 +23,7 @@
 		9202823622C3B8B5004F6FC4 /* UIView+HB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9202822A22C3B8B5004F6FC4 /* UIView+HB.swift */; };
 		9202823722C3B8B5004F6FC4 /* UIButton+HB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9202822B22C3B8B5004F6FC4 /* UIButton+HB.swift */; };
 		9202823822C3B8B5004F6FC4 /* Dictionary+HB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9202822C22C3B8B5004F6FC4 /* Dictionary+HB.swift */; };
+		92064CDF22C45B7B004F9AFB /* DispatchTime+HB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92064CDE22C45B7B004F9AFB /* DispatchTime+HB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		9202822A22C3B8B5004F6FC4 /* UIView+HB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+HB.swift"; sourceTree = "<group>"; };
 		9202822B22C3B8B5004F6FC4 /* UIButton+HB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+HB.swift"; sourceTree = "<group>"; };
 		9202822C22C3B8B5004F6FC4 /* Dictionary+HB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+HB.swift"; sourceTree = "<group>"; };
+		92064CDE22C45B7B004F9AFB /* DispatchTime+HB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchTime+HB.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,18 +91,19 @@
 		9202822022C3B8B5004F6FC4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				9202822122C3B8B5004F6FC4 /* UIImage+HB.swift */,
-				9202822222C3B8B5004F6FC4 /* UIColor+HB.swift */,
 				9202822322C3B8B5004F6FC4 /* CIFilter+HB.swift */,
-				9202822422C3B8B5004F6FC4 /* String+HB.swift */,
 				9202822522C3B8B5004F6FC4 /* Data+HB.swift */,
-				9202822622C3B8B5004F6FC4 /* UIControl+HB.swift */,
-				9202822722C3B8B5004F6FC4 /* UITableView+HB.swift */,
-				9202822822C3B8B5004F6FC4 /* HBPublicFunctions.swift */,
-				9202822922C3B8B5004F6FC4 /* UICollectionView+HB.swift */,
-				9202822A22C3B8B5004F6FC4 /* UIView+HB.swift */,
-				9202822B22C3B8B5004F6FC4 /* UIButton+HB.swift */,
 				9202822C22C3B8B5004F6FC4 /* Dictionary+HB.swift */,
+				92064CDE22C45B7B004F9AFB /* DispatchTime+HB.swift */,
+				9202822822C3B8B5004F6FC4 /* HBPublicFunctions.swift */,
+				9202822422C3B8B5004F6FC4 /* String+HB.swift */,
+				9202822B22C3B8B5004F6FC4 /* UIButton+HB.swift */,
+				9202822922C3B8B5004F6FC4 /* UICollectionView+HB.swift */,
+				9202822222C3B8B5004F6FC4 /* UIColor+HB.swift */,
+				9202822622C3B8B5004F6FC4 /* UIControl+HB.swift */,
+				9202822122C3B8B5004F6FC4 /* UIImage+HB.swift */,
+				9202822722C3B8B5004F6FC4 /* UITableView+HB.swift */,
+				9202822A22C3B8B5004F6FC4 /* UIView+HB.swift */,
 			);
 			name = Sources;
 			path = ../../Sources;
@@ -178,6 +181,7 @@
 			files = (
 				9202823122C3B8B5004F6FC4 /* Data+HB.swift in Sources */,
 				9202823222C3B8B5004F6FC4 /* UIControl+HB.swift in Sources */,
+				92064CDF22C45B7B004F9AFB /* DispatchTime+HB.swift in Sources */,
 				9202823322C3B8B5004F6FC4 /* UITableView+HB.swift in Sources */,
 				9202823522C3B8B5004F6FC4 /* UICollectionView+HB.swift in Sources */,
 				920281D322C355CE004F6FC4 /* RootViewController.swift in Sources */,

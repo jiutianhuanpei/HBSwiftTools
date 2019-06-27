@@ -74,13 +74,20 @@ public extension String {
         return NSRange(location: utf16.distance(from: utf16.startIndex, to: from), length: utf16.distance(from: from, to: to))
     }
     
-    func range(with str: String) -> NSRange? {
+    /// 获取子字符串在字符串中的位置
+    ///
+    /// - Parameter str: 子字符串
+    /// - Returns: 位置，若不在，则 range.location == NSNotFound
+    func range(with str: String) -> NSRange {
         
         guard let r = range(of: str) else {
-            return nil
+            return NSMakeRange(NSNotFound, 0)
         }
         
-        return self.toNSRange(r)
+        guard let range = self.toNSRange(r) else {
+            return NSMakeRange(NSNotFound, 0)
+        }
+        return range
     }
 }
 
