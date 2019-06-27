@@ -1,4 +1,6 @@
-# HBSwiftTools
+# HBSwiftTools                           
+
+![Cocoapods](https://img.shields.io/cocoapods/v/HBSwiftTools.svg)
 
 ----
 
