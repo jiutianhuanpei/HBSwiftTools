@@ -213,4 +213,5 @@ DispatchQueue.main.asyncAfter(deadline: 1.5) {
 
 
 [^toImage]: 可以转图片的字符串，必须是由图片转换成的 base64 字符串。
+
 [^toString]: 图片转换成 base64 字符串，可以用 `func convertToImage() -> UIImage?` 方法再转成图片。
